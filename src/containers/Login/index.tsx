@@ -1,15 +1,14 @@
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { Button, Form, Input, Card } from 'antd';
+import { useNavigate } from 'react-router';
 
-interface LoginInterface
-{
+interface LoginInterface {
     email: string;
     password: string;
 }
 
-const LoginInterfaceValues =
-{
+const LoginInterfaceValues = {
     email: '',
     password: ''
 }
@@ -20,6 +19,7 @@ const validationSchema = yup.object({
 })
 
 const Login: React.FC = () => {
+    const navigate = useNavigate();
 
     async function handleSubmit(values: LoginInterface) {
         try {
@@ -65,9 +65,9 @@ const Login: React.FC = () => {
                     />
                 </Form.Item>
                     <Button type="primary" htmlType="submit">
-                        Log in
+                        Login
                     </Button>
-                    <Button type="primary" >register now!</Button>
+                    <Button onClick={() => {navigate('/register')}} type="primary" >Register</Button>
                     
             </Form>
         </Card>

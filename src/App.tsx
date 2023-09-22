@@ -1,16 +1,31 @@
-import { useState } from 'react'
 import './App.css'
-import { Login } from './containers/'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { PublicLayout } from './layouts'
+import { LoginPage, RegisterPage } from './pages'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const router = createBrowserRouter([
+    {
+      element: <PublicLayout />,
+      children: [
+        {
+          path: '/',
+          element: <LoginPage />
+        },
+        {
+          path: '/login',
+          element: <LoginPage />
+        },
+        {
+          path: '/register',
+          element: <RegisterPage />
+        },
+      ]
+    }
+  ])
 
   return (
-    <>
-      <div>
-        <Login />
-      </div>
-    </>
+      <RouterProvider router={router} />
   )
 }
 
