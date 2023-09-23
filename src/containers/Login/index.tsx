@@ -21,10 +21,32 @@ const validationSchema = yup.object({
 const Login: React.FC = () => {
     const navigate = useNavigate();
 
+    async function registrantLogin(values: LoginInterface) {
+        try {
+            const fetching = await fetch('https://mock-api.arikmpt.com/api/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(values)
+            });
+            if (!fetching.ok) {
+                throw new Error('Error login user');
+            }
+            const response = await fetching.json();
+
+            localStorage.setItem('token',response.data.token);
+            
+            navigate('/List');
+        } catch (error) {
+            alert('Login Error');
+        }
+    }
+
     async function handleSubmit(values: LoginInterface) {
         try {
             if (formik.isValid) {
-                console.log('a')
+                await registrantLogin(values);
             }
         } catch (error) {
             alert('Error in handleSubmit');
@@ -39,7 +61,7 @@ const Login: React.FC = () => {
 
 
     return (
-        <Card title="Login Page" headStyle={{ textAlign: 'center' }}>
+        <Card title="Login Page" headStyle={{ textAlign: 'center' }} style={{ width: '30vw', height: '30vw' }}>
             <Form onFinish={formik.handleSubmit}>
                 <Form.Item
                     name="email"

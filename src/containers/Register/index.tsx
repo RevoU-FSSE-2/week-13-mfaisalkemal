@@ -16,23 +16,41 @@ const RegisterInterfaceValues = {
 }
 
 const validationSchema = yup.object({
-    name: yup.string().required('Name must exist'),
+    name: yup.string().required('Name cannot blank'),
     email: yup.string()
         .email('Invalid email format')
         .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Invalid email format')
-        .required('Email must exist')
+        .required('Email cannot blank')
         .min(10),
-    password: yup.string().required('Password must exist').min(8, '8 characters minimum')
+    password: yup.string().required('Password cannot blank').min(8, '8 characters minimum')
 })
 
 const Register: React.FC = () => {
 
     const navigate = useNavigate();
 
+    async function addRegistrant(values: RegisterInterface) {
+        try {
+            const fetching = await fetch('https://mock-api.arikmpt.com/api/user/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(values)
+            });
+            if (!fetching.ok) {
+                throw new Error('Registering error');
+            }
+            navigate('/login');
+        } catch (error) {
+            console.error('Registering error:', error);
+        }
+    }
+    
     async function handleSubmit(values: RegisterInterface) {
         try {
             if (formik.isValid) {
-                console.log('a');
+                await addRegistrant(values);
             }
         } catch (error) {
             console.error('Error in handleSubmit:', error);
@@ -46,7 +64,7 @@ const Register: React.FC = () => {
     })
 
     return (
-        <Card title="Register Page" headStyle={{ textAlign: 'center' }}>
+        <Card title="Register Page" headStyle={{ textAlign: 'center' }} style={{ width: '30vw', height: '30vw' }}>
             <Form onFinish={formik.handleSubmit}>
                 <Form.Item
                     name="name"
@@ -89,9 +107,9 @@ const Register: React.FC = () => {
                     
                     <Button onClick={() => {navigate('/login')}} type="primary" > Login </Button>
                     <Button type="primary" htmlType="submit">
-                        Register
+                        Submit
                     </Button>
-                    
+
             </Form>
         </Card>
     );
