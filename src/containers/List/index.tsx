@@ -22,6 +22,7 @@ interface GetCategoryResponse {
 const List: React.FC = () => {
 
     const { categories, setCategories } = useContext(AppContext);
+    
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
 
@@ -34,20 +35,24 @@ const List: React.FC = () => {
                     'Authorization': `Bearer ${token}`
                 }
             })
+            
             const response: GetCategoryResponse = await fetching.json();
+
+            
 
             const categorizedData = response.data ? response.data.map(category => ({
                 ...category,
                 key: category.id
             })) : [];
+            
             setCategories(categorizedData ?? []);
+            console.log(categorizedData)
         },
         [setCategories, token]
     )
     useEffect(
         () => {
             getCategoryList()
-            console.log(categories)
         },
         [getCategoryList]
     )
@@ -79,12 +84,12 @@ const List: React.FC = () => {
         {
             title: 'ID',
             dataIndex: 'id',
-            key: 'id'
+            key: 'id',
         },
         {
             title: 'Name',
             dataIndex: 'name',
-            key: 'name'
+            key: 'name',
         },
         {
             title: 'Status',
@@ -93,6 +98,11 @@ const List: React.FC = () => {
             render: (isActive) => (
                 <span>{isActive ? 'Active' : 'Deactive'}</span>
             ),
+            sorter: (a) => (a.is_active ? 1 : -1),
+            filters: [
+                { text: 'Active', value: true },
+                { text: 'Deactive', value: false },
+            ],
             onFilter: (value, record) => record.is_active === value,
         },
         {
