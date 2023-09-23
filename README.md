@@ -1,28 +1,22 @@
-# Link Deployment
-[link](https://650e3d8e5b79915ac55222de--poetic-biscochitos-cc0a18.netlify.app/)
+#
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Week 13 Assignment
 
-Currently, two official plugins are available:
+This Week's Assignment is create a simple registration form with React and Typescript.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Other key features:
+- Client-side validation using Formik and Yup
+- CSS design by Ant Design
+- Connect API and perform CRUD
 
-## Expanding the ESLint configuration
+## Deployed link: 
+[link](https://650e7e840c4ca478402d6d42--famous-chaja-fb7ebc.netlify.app/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+## How to Run
+```
+git clone
+npm install
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/EjimcIPa)
