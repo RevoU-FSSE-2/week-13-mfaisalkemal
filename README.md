@@ -1,5 +1,3 @@
-#
-
 # Week 13 Assignment
 
 This Week's Assignment is create a simple registration form with React and Typescript.
