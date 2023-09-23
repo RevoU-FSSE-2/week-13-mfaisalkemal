@@ -8,7 +8,7 @@ Other key features:
 - Connect API and perform CRUD
 
 ## Deployed link: 
-[link](https://650e7e840c4ca478402d6d42--famous-chaja-fb7ebc.netlify.app/)
+[link](https://650e850779d0587c756fc2d3--stupendous-chimera-640b3f.netlify.app/)
 
 ## How to Run
 ```
