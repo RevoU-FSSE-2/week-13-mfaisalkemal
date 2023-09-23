@@ -2,6 +2,7 @@ import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { PublicLayout } from './layouts'
 import { LoginPage, RegisterPage, ListPage, AddCategoryPage, EditCategoryPage } from './pages'
+import AppProvider from './Provider/AppProvider'
 
 function App() {
   const router = createBrowserRouter([
@@ -21,7 +22,7 @@ function App() {
           element: <RegisterPage />
         },
         {
-          path: '/List',
+          path: '/list',
           element: <ListPage />
         },
         {
@@ -37,7 +38,9 @@ function App() {
   ])
 
   return (
+    <AppProvider>
       <RouterProvider router={router} />
+    </AppProvider>
   )
 }
 
