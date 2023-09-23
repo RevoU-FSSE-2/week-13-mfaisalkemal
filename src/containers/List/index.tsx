@@ -99,10 +99,6 @@ const List: React.FC = () => {
                 <span>{isActive ? 'Active' : 'Deactive'}</span>
             ),
             sorter: (a) => (a.is_active ? 1 : -1),
-            filters: [
-                { text: 'Active', value: true },
-                { text: 'Deactive', value: false },
-            ],
             onFilter: (value, record) => record.is_active === value,
         },
         {
@@ -119,7 +115,7 @@ const List: React.FC = () => {
     ];
 
     return (
-        <Card title="List Page" style={{ height: '75vh' }} extra={
+        <Card title="List Page" style={{ height: '85vh' }} extra={
             <div>
                 <br></br>
                 <div>
